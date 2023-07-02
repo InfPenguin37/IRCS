@@ -30,3 +30,29 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/', indexRouter)
 
 app.listen(process.env.PORT || 3000)
+
+
+// Express middleware to parse form data
+app.use(express.urlencoded({ extended: false }));
+
+app.post('/submit', (req, res) => {
+    const formData = req.body;
+    const fieldNames = Object.keys(formData);
+
+    // Construct the SQL query dynamically
+    const insertQuery = `INSERT INTO DataEntry (${fieldNames.join(', ')}) VALUES ?`;
+
+    // Prepare the data to be inserted into the table
+    const values = [fieldNames.map(fieldName => formData[fieldName])];
+
+    // Insert form data into MySQL table
+    connection.query(insertQuery, [values], (err, result) => {
+        if (err) throw err;
+        console.log('Form data inserted into the database!');
+        res.send('Form submitted successfully!');
+    });
+});
+
+/*app.listen(PORT, () => {
+    console.log(`Server running on port ${port}`);
+});*/

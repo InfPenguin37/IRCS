@@ -1,0 +1,127 @@
+h1 {
+    color: darkred;
+    text-align: center;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+form {
+    overflow: hidden;
+}
+
+input {
+    padding: 10px;
+    border: 2px solid;
+    resize: vertical;
+    border-radius: 30px;
+    width: 30%;
+    border-color: black;
+    float: right;
+    clear: both;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.container {
+    border-radius: 10px;
+    background-color: #f2f2f2;
+    padding: 20px;
+    position: relative;
+}
+
+.container-small {
+    margin-top: 10px;
+}
+
+.fieldset-auto {
+    width: 50%;
+}
+
+input:focus {
+    border-color: red;
+}
+
+label {
+    padding: 5px 5px 5px 0;
+    display: inline-block;
+}
+
+button[type=submit] {
+    background-color: rgb(211, 158, 168);
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    float: none;
+}
+
+button[type=submit]:hover {
+    background-color: rgb(212, 9, 49);
+}
+
+.col-30 {
+    float: left;
+    width: 45%;
+    margin-top: 5px;
+}
+
+.col-70 {
+    float: right;
+    width: 45%;
+    margin-top: 5px;
+}
+
+.row::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+@media screen and (max-width: 600px) {
+    .col-30,
+    .col-70,
+    button[type=submit] {
+        width: 100%;
+        margin-top: 0;
+    }
+}
+
+.help-text {
+    display: none;
+    margin-top: 10px;
+    opacity: 0;
+    color: rgb(206, 15, 50);
+    box-sizing: border-box;
+    border: solid;
+    border-width: 1px;
+    background-color: rgb(233, 215, 219);
+    border-radius: 5px;
+    padding: 3px 3px 3px 10px;
+    transition: opacity 1s ease-in-out;
+    width: 45%;
+}
+
+.help-text.show {
+    display: block;
+    opacity: 1;
+    float: right;
+}
+
+.help-button {
+    background-color: rgb(211, 158, 168);
+    color: black;
+    padding: 2px 2px 2px 2px;
+    border-radius: 3px;
+    float: right;
+}
