@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+
+<head>
+    <link rel="stylesheet" href="style.css">
+    <script src="fdrs_form.js"></script>
+    <title>FDRS Data Report</title>
+</head>
+
+<body>
+    <h1>IRCS-AP.State -FDRS Report for the Financial Year -2022-2023</h1>
+    <div class="container">
+        <form method="POST" action="/submit">
+            <fieldset class="fieldset-auto">
+                <div class="row">
+                    <div class="col-30">
+                        <label for="State">State Branch</label>
+                    </div>
+                    <div class="col-70">
+                        <input type="text" id="State" name="State" require required><br><br>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-30">
+                        <label for="UT">Union Territory Branch</label>
+                    </div>
+                    <div class="col-70">
+                        <input type="text" id="UT" name="UT" require required><br><br>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-30">
+                        <label for="Local Units">Number of Local Units:</label>
+                    </div>
+                    <div class="col-70">
+                        <input type="number" id="Local Units" name="Local_Units" required><br>
+                    </div>
+                    <br>
+                </div>
+            </fieldset>
+
+
+
+            <button type="button" onclick="inctoggleHelpText()" class="help-button">Help</button><br>
+            <div id="inchelpText" class="help-text">
+                <p>
+                    <strong>Total Income</strong>
+                    <br>To be disaggregated to:
+                    <br>• Home Government
+                    <br>• Foreign Government : other governments and government departments from outside the country. This includes the EU. Examples are: UK (DFID/FCO), US (USAID/OFDA/OTI/PRM),
+                    <br> &ensp;Sweden (SIDA) etc.
+                    <br>• Individuals : members of the public, including funds from membership, major donors and legacies.
+                    <br>• Corporations : including donations, proceeds from joint promotions or sponsorship.
+                    <br>• Foundations : funds from a 'not for profit' set up with the explicit aim of making donations to other organisations (e.g., Charities Aid Foundation). This includes foundations established
+                    <br> &ensp;by corporations or individuals (e.g., Lebara Foundation and Bill & Melinda Gates Foundation).
+                    <br>• UN Agencies and other Multilateral Agencies. These include the development institutions of the UN (e.g., UNDP), the World Bank, Global Fund and regional development banks.
+                    <br>• Non-governmental organizations - local and international "not for profit" civil society organizations independent from states and international governmental organizations.
+                    <br>• Service income : income linked to the provision of public services; for example, blood, hospital or ambulance services, search and rescue, etc.
+                    <br>• Income generating activity : income linked to the sale of a product or service; for example, commercial first aid training, retail, sale and/or rental of other products and services.
+                    <br>• Other National Society
+                    <br>• IFRC (HQ, regional and countries delegations) - DREFs should be reported under the category 'IFRC'
+                    <br>• ICRC
+                    <br>• Other : income that does not come from any of the above categories</p>
+            </div><br>
+            <fieldset class="fieldset-auto">
+                <legend>Income</legend><br>
+                <div class="row">
+                    <div class="col-30">
+                        <label for="Income-Home Government">Home Government:</label>
+                    </div>
+                    <div class="col-70">
+                        <input type="number" id="Income-Home Government" name="Income_Home_Government" class="income" required><br>
+                    </div>
+                    <br>
+                </div>
+                <div class="row">
+                    <div class="col-30">
+                        <label for="Income-Foreign Government">Foreign Government:</label>
+                    </div>
+                    <div class="col-70">
+                        <input type="number" id="Income-Foreign Government" name="Income_Foreign_Government" class="income" required><br>
+                    </div>
+                    <br>
+                </div>
+                <div class="row">
+                    <div class="col-30">
+                        <label for="Income-Individuals">Individual:</label>
+                    </div>
+                    <div class="col-70">
+                        <input onblur="findTotal()" type="number" id="Income-Individuals" name="Income_Individuals" class="income" required><br>
+                    </div>
+                    <br>
+                </div>
+                <div class="row">
+                    <div class="col-30">
+                        <label for="Income-Corporations">Corporations:</label>
+                    </div>
+                    <div class="col-70">
+                        <input type="number" id="Income-Corporations" name="Income_Corporations" class="income" required><br>
+                    </div>
+                    <br>
+                </div>
+                <div class="row">
+                    <div class="col-30">
+                        <label for="Income-Foundations">Foundations:</label>
+                    </div>
+                    <div class="col-70">
+                        <input type="number" id="Income-Foundations" name="Income_Foundations" class="income" required><br>
+                    </div>
+                    <br>
+                </div>
+                <div class="row">
+                    <div class="col-30">
+                        <label for="Income-UN Agencies">UN Agencies:</label>
+                    </div>
+                    <div class="col-70">
+                        <input type="number" id="Income-UN Agencies" name="Income_UN_Agencies" class="income" required><br>
+                    </div>
+                    <br>
+                </div>
+                <div class="row">
+                    <div class="col-30">
+                        <label for="Income-Non-Govt">Non-governmental:</label>
+                    </div>
+                    <div class="col-70">
+                        <input type="number" id="Income-Non-Govt" name="Income_Non_Government" class="income" required><br>
+                    </div>
+                    <br>
+                </div>
+                <div class="row">
+                    <div class="col-30">
+                        <label for="Income-Income Generating">Income Generating:</label>
+                    </div>
+                    <div class="col-70">
+                        <input type="number" id="Income-Income Generating" name="Income_Income_Generating" class="income" required><br>
+                    </div>
+                    <br>
+                </div>
+                <div class="row">
+                    <div class="col-30">
+                        <label for="Income-Other National">Other National:</label>
+                    </div>
+                    <div class="col-70">
+                        <input type="number" id="Income-Other National" name="Income_Other_National" class="income" required><br>
+                    </div>
+                    <br>
+                </div>
+                <div class="row">
+                    <div class="col-30">
+                        <label for="Income-IFRC">IFRC:</label>
+                    </div>
+                    <div class="col-70">
+                        <input type="number" name="Income_IFRC" class="income" required><br>
+                    </div>
+                    <br>
+                </div>
+                <div class="row">
+                    <div class="col-30">
+                        <label for="Income-ICRC">ICRC:</label>
+                    </div>
+                    <div class="col-70">
+                        <input type="number" id="Income-ICRC" name="Income_ICRC" class="income" required><br>
+                    </div>
+                    <br>
+                </div>
+                <div class="row">
+                    <div class="col-30">
+                        <label for="Income-Others">Others:</label>
+                    </div>
+                    <div class="col-70">
+                        <input type="number" id="Income-Others" name="Income_Others" class="income" required><br>
+                    </div>
+                    <br>
+                </div>
+            </fieldset>
+            <br>
+            <button type="button" onclick="exptoggleHelpText()" class="help-button">Help</button><br>
+            <div id="exphelpText" class="help-text">
+                <p>
+                    <strong>Total Expenditure</strong>
+                    <br>The fiscal value of money, material goods, and services which the Reporting National Society spends during the Reporting Year, excluding internal transfers within the reporting National Society.<br></p>
+            </div>
+            <fieldset class="fieldset-auto">
+                <div class="row">
+                    <div class="col-30">
+                        <label for="Income-Total Income">Total Income:</label>
+                    </div>
+                    <div class="col-70">
+                        <input type="number" id="Income-Total Income" name="Income_Total_Income" readonly><br>
+                    </div>
+                </div>
+                <br>
+
+                <div class="row">
+                    <div class="col-30">
+                        <label for="Total Expnediture">Total Expenditure:</label>
+                    </div>
+                    <div class="col-70">
+                        <input type="number" id="Total Expenditure" name="Total_Expenditure"><br>
+                    </div>
+                </div>
+            </fieldset>
+
+
+            <button type="button" onclick="peopletoggleHelpText()" class="help-button">Help</button><br>
+            <div id="peoplehelpText" class="help-text">
+                <p>
+                    <strong>Number of people volunteering their time</strong>
+                    <br>People that have given their time voluntarily to support the delivery of services of the reporting National Society for at least four hours during the Reporting Year.
+                    <br> This includes young people and/or participants in youth programmes, while it excludes blood donors. This can include Membership of the society.<br></p>
+            </div><br>
+            <fieldset class="fieldset-auto">
+                <legend>Number of People Volunteering Their Time</legend><br>
+                <div class="row">
+                    <div class="col-30">
+                        <label for="People-Patrons">Patrons:</label>
+                    </div>
+                    <div class="col-70">
+                        <input type="number" id="People-Patrons" name="People_Patrons" required><br>
+                        <br>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-30">
+                        <label for="People-Vice Patrons">Vice Patrons:</label>
+                    </div>
+                    <div class="col-70">
+                        <input type="number" id="People-Vice Patrons" name="People_Vice_Patrons" required><br>
+                        <br>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-30">
+                        <label for="People-Life Members">Life Members:</label>
+                    </div>
+                    <div class="col-70">
+                        <input type="number" id="People-Life Members" name="People_Life_Members" required/><br>
+                        <br>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-30">
+                        <label for="People-Life Associates">Life Associates:</label>
+                    </div>
+                    <div class="col-70">
+                        <input type="number" id="People-Life Associates" name="People_Life_Associates" required/><br>
+                        <br>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-30">
+                        <label for="People-Annual Members">Annual Members:</label>
+                    </div>
+                    <div class="col-70">
+                        <input type="number" id="People-Annual Members" name="People_Annual_Members" required/><br>
+                        <br>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-30">
+                        <label for="People-JRC/YRC">JRC/YRC:</label>
+                    </div>
+                    <div class="col-70">
+                        <input type="number" name="People_JRC_YRC" required><br>
+                        <br>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-30">
+                        <label for="People-Others">Others:</label>
+                    </div>
+                    <div class="col-70">
+                        <input type="number" id="People-Others" name="People_Others" required><br>
+                        <br>
+                    </div>
+                </div>
+            </fieldset>
+            <br>
+            <button type="button" onclick="stafftoggleHelpText()" class="help-button">Help</button><br>
+            <div id="staffhelpText" class="help-text">
+                <p>
+                    <strong>Number of Paid Staff</strong>
+                    <br>People who are contracted by the Reporting National Society for a minimum of three months in total during the Reporting Year and are either remunerated for their work or are interns.
+                    <br>Staff contracted by the Secretariat are not counted by the reporting National Society even if they are working for the NS within the country to which the reporting National Society belongs.
+                    <br>Staff contracted by a reporting National Society are reported by that National Society regardless of who remunerates them and where they work, whether it is in-country, delegates in the field, out-of-country, or staff-on-loan.
+                    <br>If a person is contracted for the first three months to the reporting National Society and then is contracted again for the last three months, they should only be counted once.</p>
+            </div>
+            <fieldset class="fieldset-auto">
+                <legend>Paid Staff</legend>
+                <div class="row">
+                    <div class="col-30">
+                        <label for="Paid Staff-Male">Number of Paid Staff(Male):</label>
+                    </div>
+                    <div class="col-70">
+                        <input type="number" id="Paid Staff-Male" name="Paid_Staff_Male" class="staff" required><br>
+                        <br>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-30">
+                        <label for="Paid Staff-Female">Number of Paid Staff(Female):</label>
+                    </div>
+                    <div class="col-70">
+                        <input type="number" id="Paid Staff-Female" name="Paid_Staff_Female" class="staff" required><br>
+                        <br>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-30">
+                        <label for="Paid Staff-Others">Number of Paid Staff(Others):</label>
+                    </div>
+                    <div class="col-70">
+                        <input type="number" id="Paid Staff-Others" name="Paid_Staff_Others" class="staff" required><br>
+                        <br>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-30">
+                        <label for="total-staff">Total Staff Members:</label>
+                    </div>
+                    <div class="col-70">
+                        <input type="number" id="total-staff" name="total_staff" required readonly><br>
+                        <br>
+                    </div>
+                </div>
+            </fieldset><br><br>
+            <button type="button" onclick="firstaidtoggleHelpText()" class="help-button">Help</button><br>
+            <div id="firstaidhelpText" class="help-text">
+                <p>
+                    <strong>People Trained in First Aid</strong>
+                    <br>People who have completed at least one first aid course led or facilitated by NS in the reporting year</p>
+            </div>
+            <fieldset class="fieldset-auto">
+                <div class="row">
+                    <div class="col-30">
+                        &emsp;<label for="People-First Aid">People trained in First-Aid:</label>
+                    </div>
+                    <div class="col-70">
+                        <input type="number" id="People-First Aid" name="People_First_Aid" required><br>
+                        <br>
+                    </div>
+                </div>
+            </fieldset><br><br>
+
+            <button type="button" onclick="programmetoggleHelpText('container-small','550px','10px')" class="help-button">Help</button><br>
+            <div id="programmehelpText" class="help-text">
+                <p><strong>People Reached Directly</strong> - are People Reached at a delivery point (or through a reliable link with a delivery point, such as when a household head receives goods specifically for a family member) and the reporting National
+                    Society provider is present to verify the delivery of the goods or services, The delivery point can be stationary, as with a nurse at a health clinic, or mobile, as with a nurse providing vaccinations at households.
+                    <br><strong>People Reached Indirectly</strong> - are People Reached who do not fit the definition of People Reached Directly.
+                    <br>When a recipient receives both direct and indirect services within the same Thematic Area or Type of Programme, they should only be reported as a direct recipient.
+                    <br><strong>Examples: People Reached Directly</strong>
+                    <br>When a head of household receives certain services that are transferred directly to other household members, such as emergency food items at a distribution centre, or participation in a cash for work programme, we count all the
+                    &ensp;members of the household as ‘People Reached’ Directly as there is a reliable link with the delivery point.
+                    <br><strong>Examples: People Reached Indirectly</strong>
+                    <br>A community member who listens to a HIV awareness programme on the radio is not reached directly because the Federation provider is not present, but they are counted as ‘People Reached’ Indirectly, provided the number of radio
+                    audience &ensp;can be adequately approximated.</p>
+                <p>
+                    <strong>Disaster response and early recovery</strong>
+                    <br>National Society services to respond to and strengthen recovery from natural and man-made disasters
+                    <br>Examples
+                    <br>• Emergency shelter
+                    <br>• Food and nutrition distribution
+                    <br>• Restoring family links
+                    <br>• Psychosocial support
+                    <br>• Any other programme implemented specifically for disaster response and early recovery.
+                </p>
+                <p>
+                    <strong>Long-term services and development</strong>
+                    <br>National Society services to strengthen community resilience, improve health, and address the needs of the most vulnerable.
+                    <br>Examples
+                    <br>• Health: HIV/AIDS, malaria, tuberculosis, non-communicable diseases, maternal, newborn, and child health, community
+                    <br>&ensp;based health and first aid, water, sanitation and hygiene promotion, hospital and ambulance services, etc.
+                    <br>• Community development: livelihoods, road safety, security, etc.
+                    <br>• Social services: psychosocial support, migrant services, elderly support, advocacy campaign against violence
+                </p>
+            </div>
+            <fieldset class="fieldset-auto">
+                <legend>People Reached by Type of Programme</legend>
+                <div class="row">
+                    <div class="col-30">
+                        <label for="drrd">Disaster Response and Recovery(Directly):</label>
+                    </div>
+                    <div class="col-70">
+                        <input type="number" id="drrd" name="Disaster_Response_Recovery_Direct" required><br>
+                        <br>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-30">
+                        <label for="drri">Disaster Response and Recovery(Indirectly):</label>
+                    </div>
+                    <div class="col-70">
+                        <input type="number" id="drri" name="Disaster_Response_Recovery_Indirect" required><br>
+                        <br>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-30">
+                        <label for="ltsdd">Long Term Service & Deployment(Directly):</label>
+                    </div>
+                    <div class="col-70">
+                        <input type="number" id="ltsdd" name="Long_Term_Service_Deployment_Direct" required><br>
+                        <br>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-30">
+                        <label for="ltsdi">Long Term Service & Deployment(Indirectly):</label>
+                    </div>
+                    <div class="col-70">
+                        <input type="number" id="ltsdi" name="Long_Term_Service_Deployment_Indirect" required><br>
+                        <br>
+                    </div>
+                </div>
+            </fieldset>
+            <br><br><br>
+
+
+
+            <div class="container-small" id="container-small">
+                <button type="button" onclick="thematictoggleHelpText()" class="help-button">Help</button><br>
+                <div id="thematichelpText" class="help-text">
+                    <p>
+                        <strong>Disaster Risk Reduction</strong>
+                        <br>National Society activities include preparing and assisting communities in disaster- and crisis-vulnerable areas in adopting climate-risk-informed and environmentally responsible and other relevant values and practices.
+                        <br>Examples:
+                        <br>Contingency planning, particularly at community and household level
+                        <br>• Establishment of appropriate early warning and risk management systems
+                        <br>• Community-wide awareness raising and engagement on climate change
+                        <br>• Improvement and/or implementation of environmentally responsive practices such as forecast-based financing
+                        <br>• Tree planting
+                    </p>
+                    <p>
+                        <strong>Shelter</strong>
+                        <br>Shelter services and assistance are provided before, during, and after a disaster in order to meet the accommodation and settlement needs of affected people, to reduce their accommodation and settlement risks and to strengthen
+                        their safety, well-being and longer term recovery
+                    </p>
+                    <p>
+                        <strong>Livelihoods</strong>
+                        <br>Livelihoods services help communities (especially but not only in disaster and crisis affected areas) by supporting people to replace livelihood assets, restore livelihood activities, and strengthen, diversify and protect livelihoods,
+                        without damaging the natural resource base.
+                        <br>Examples
+                        <br>Prevention of further damage and loss
+                        <br>• Repair of essential infrastructures (e.g., schools, roads, and community facilities)
+                        <br>• Restoration of social services
+                        <br>• Basic needs assistance for livelihoods security including food, clothes and other relief items
+                        <br>• Improvement of income sources (e.g., via vocational training)
+                        <br>• Food production and income generation (e.g., through seed distribution programmes and husbandry programmes)
+                        <br>• Community awareness activities on livelihoods strengthening and protection
+                    </p>
+                    <p>
+                        <strong>Health</strong>
+                        <br>Examples
+                        <br>Activities focused on informing, educating and communicating necessary behaviour change messages on prevailing health issues and problems. Inclusive of prevention and community based management (e.g., HIV/AIDS, Hepatitis, TB,
+                        family planning, non-communicable diseases, etc)
+                        <br>• Programmes supporting vulnerable populations through routine home visits and outreach activities to provide basic
+                        <br> &ensp;community care services (e.g., older people, socially isolated groups, migrants etc)
+                        <br>• Provision of health care and treatment by trained health professionals, through acute or longer-term care in health facilities
+                        <br> &ensp;such as hospitals, clinics and health posts
+                        <br>• Provision of health products such as vaccines, essential medicines and other medical supplies
+                        <br>• Sourcing and management of voluntary non-remunerated blood donations
+                        <br>• Training of individuals in first aid and subsequent activities providing immediate first aid care to injured persons
+                        <br>• Programmes supporting reproductive, maternal, newborn and child activities ranging from acute hospital care to
+                        <br> &ensp;community-based services. Inclusive of prenatal (before birth) and post-partum (after birth) such as the promotion of healthy
+                        <br> &ensp;practices and illness detection
+                        <br>• Programmes sourcing, distributing and promoting the proper use of malaria nets
+                        <br>• Programmes providing support to immunisation campaigns and routine immunisation programmes through community
+                        <br>&ensp;mobilisation, sensitisation, surveillance, demand creation, etc
+                        <br>• Promotion of proper nutrition and food education
+                        <br>• Programmes providing mental health and/or psychosocial support services
+                        <br>• Prevention, preparation and response to infectious disease outbreaks
+                        <br>• Community-based surveillance activities contributing to early-warning systems for disease outbreaks
+                        <br>• Referral activities acting in support of health systems
+                        <br>• Harm reduction services providing support for marginalised or excluded populations who are denied or have restricted access
+                        <br> &ensp;to health care
+                        <br>• Programmes providing advice, counselling and basic services to drug and other substance abuse users
+                    </p>
+                    <p>
+                        <strong>Psychosocial and Mental Services</strong>
+                        <br>Examples:
+                        <br>Basic psychological support such as psychological first aid (PFA) and recreational activities
+                        <br>• Psychological support with a specific focus on groups and families such as peer support and group work
+                        <br>• Prevention and treatment activities for individuals who present complicated psychological distress and are at risk of
+                        <br> &ensp;developing mental health conditions
+                        <br>• Basic psychological interventions such as counselling and psychotherapy provided in healthcare facilities with accompanying
+                        <br> &ensp;outreach work in community facilities
+                        <br>• Programmes providing specialized clinical care and treatment for individuals with chronic mental health conditions suffering
+                        <br> &ensp;severe distress and over a long period of time
+                        <br>• Activities in treatment centres for survivors of torture provided in detention facilities
+                        <br>• Alternative approaches to drug therapy provided within State healthcare and social welfare systems
+                    </p>
+                    <p>
+                        <strong>Immunisation Services</strong>
+                        <br>People who have been reached by Red Cross Red Crescent (RCRC) National Societies with life-saving vaccines. This indicator includes any immunization related activities for vaccine preventable diseases.
+                        <br>Examples
+                        <br>Support to routine immunization efforts
+                        <br>• Supporting supplementary immunization activities
+                        <br>• Immunization campaigns and other outreach activities
+                        <br>• Administrative support at vaccination sites
+                        <br>• Risk communication and community engagement
+                        <br>• Transporting vaccine recipients to vaccination sites
+                        <br>• Cold chain and logistics
+                        <br>• Directly administering vaccines
+                        <br>• Conducting vaccine perception survey
+                    </p>
+                    <p>
+                        <strong>Water, Sanitation and Hygiene (WASH)</strong>
+                        <br>Examples
+                        <br>Programmes providing communities with access to safe water
+                        <br>• Programmes providing communities with knowledge on treatment and reuse of waste water
+                        <br>• Programmes supporting communities to reduce open defecation
+                        <br>• Programmes focusing on the community-based management of water and sanitation facilities, including safe excreta and
+                        <br> &ensp;refuse disposal
+                        <br>• Programmes providing vector control services
+                        <br>• The sourcing and distribution of hygiene/dignity kits
+                        <br>• Programmes supporting women and girls in managing their menstrual hygiene needs with dignity
+                        <br>• Training, education, awareness-raising activities on personal and community hygiene practices (e.g., in schools, or
+                        <br> &ensp;community groups)
+                    </p>
+                    <p>
+                        <strong>Migration</strong>
+                        <br>Migration activities support the needs of people who leave or flee their homes in search of a more secure and stable environment in other countries
+                        <br>Examples
+                        <br>• Assistance and protection services in the context of migration (e.g., provision of foods, water, essential goods, and services
+                        <br> &ensp;like primary health care and essential medicines)
+                        <br>• Services supporting the integration of migrants into a new society (e.g., help with legal papers, language, housing, and
+                        <br> &ensp;employment)
+                        <br>• Awareness-raising and advocacy addressing xenophobia, discrimination, and negative perceptions towards migrants
+                    </p>
+                    <p>
+                        <strong>Climate and Environmental Crisis</strong>
+                        <br>Programs that reduce risks and vulnerability to climate-related shocks, stresses and longer-term changes, such as climate change adaptation, disaster risk reduction and anticipatory action
+                        <br>Examples:
+                        <br>• Community-based disaster risk reduction and preparedness that address climate-related risks
+                        <br>• Enhancing knowledge and skills of local communities (including schools) on the risks related to disasters and climate change
+                        <br>• Mangrove restoration to reduce risks from storm surges or flooding
+                        <br>• Developing or contributing to national or local early warning systems/flood preparedness and evacuation plans/heatwave
+                        <br> &ensp;action plan/other relevant plan for extreme weather events
+                        <br>• Forecast-based financing
+                        <br>• Activities to reduce current and future climate-induced displacement,
+                        <br>• Activities to address changing risks of vector-borne diseases (e.g. in new regions or different seasonal timeframes)
+                    </p>
+                    <p>
+                        <strong>Cash Transfer</strong>
+                        <br>Cash transfer programming supports and provides the transfer of cash or cash equivalents (e.g., vouchers), including cash for work programmes, in order to cover the short- and/or long-term essential food and non-food needs
+                        of vulnerable populations. Transfers may or may not depend on recipients having certain characteristics or doing certain things.
+                        <br>Examples:
+                        <br>• One-off payments after a disaster as well as repeated payments during a protracted crisis
+                        <br>• Blanket provision as well as payments targeted to specific groups
+                        <br>• Programmes implemented alone as well as programmes in partnership with government agencies
+                    </p>
+                    <p>
+                        <strong>Values, Protection, and Inclusion (VPI) - PGI</strong>
+                        <br>PGI (protection, gender and inclusion)activities seek to prevent, respond and mitigate the causes, risks and consequences of all forms of violence, discrimination and exclusion. General categories of activities are based on
+                        the PGI Policy and Operational Framework (forthcoming). These include activities with a specific focus on addressing violence, discrimination and exclusion. Note that many activities address all three categories, with a particular
+                        focus.
+                        <br>Examples
+                        <br>Establish community centres (“dignity, access, participation and safety (DAPS) centres”) in a displacement camp, urban context or other setting where people at risk of violence, exclusion or discrimination can receive a range
+                        of adapted services.
+                        <br>• Programmes to prevent and respond to people affected by violence, exploitation or abuse (e.g. SGBV survivors, survivors of
+                        <br> &ensp;trafficking in persons, children affected by violence, minority groups affected by violence) providing comprehensive support
+                        <br> &ensp;through case management; on-site counselling, legal assistance, mapping, testing, monitoring and coordinating referral
+                        <br> &ensp;pathways for survivors, setting up a shelter (run by with qualified staff and trained volunteers) for people affected by or at risk
+                        <br> &ensp;of violence
+                        <br>• Designing and implementing “safe spaces” in emergency response, e.g.: for women and girls to share information and
+                        <br> &ensp;concerns related to sexual and reproductive health and rights b) for children to have a place to play, to learn or received
+                        <br> &ensp;psychosocial support
+                        <br>• Equitable access to resources for marginalised and excluded groups (in both emergency and long-term work) e.g.: design and
+                        <br> &ensp;implement peer support groups for older men in a refugee camp to improve mental health and psychosocial wellbeing,
+                        <br> &ensp;designing and implementing a disaster preparedness programme that specifically addresses the needs of persons with
+                        <br> &ensp;disabilities
+                        <br>• Longer-term social inclusion work focusing on access to opportunities and fulfilment of rights for marginalised and excluded
+                        <br> &ensp;groups e.g.: designing and implementing a livelihood and life skills programme targeting women and girls, programmes to
+                        <br> &ensp;provide access to employment for marginalised groups (e.g. migrant populations) though language courses, training and
+                        <br> &ensp;partnership with local employers 32
+                        <br>• Public campaigns or activities to reduce discrimination and stigma and promote the equality and/or rights of marginalised or
+                        <br> &ensp;excluded groups (People Reached Indirectly)
+                    </p>
+                    <p>
+                        <strong>Values, Protection, and Inclusion (VPI) - Edicational Programmes</strong>
+                        <br>Education programming seeks to contribute to ensuring safe, continuous and equitable access to inclusive, quality education opportunities.
+                        <br>Examples
+                        <br>Enhancing access to and continuity of education, such as the construction of education infrastructures (and/or their water and sanitation facilities), the distribution of education supplies and equipment, transportation services
+                        from/to schools and other educational institutions, humanitarian diplomacy for the limited use of schools as emergency shelter, the setting-up and/or running of youth clubs/centres in and out of schools.
+                        <br>• Enhancing equity and inclusion in education, such as the setting-up or running of educational institutions for specific groups (e.g., marginalised people, people living with disabilities, migrants and displaced populations,
+                        detainees, etc.), the provision of literacy or numeracy classes, (foreign) language courses, remedial or catch-up classes, homework assistance and other forms of schooling support, the tracing of documents required for school enrolment
+                        or continuing education, scholarship and other cash for education programmes, school feeding programmes (or other food distribution type in educational institutions), the provision of technical and vocational education or training,
+                        the distribution of personal, gender-sensitive hygiene items (incl. for menstrual hygiene management) in schools and other educational institutions.
+                        <br>• Enhancing protection, safety and well-being in education, such as mental health and psychosocial support services to learners and education personnel, the setting-up of temporary learning spaces in emergency response.
+                        <br>• Enhancing the provision of quality education, such as the delivery of learning sessions to the general public on a topic of RCRC expertise (e.g., climate change, risk reduction, shelter safety, health, first aid, hygiene,
+                        sanitation, migration, protection/violence prevention, gender, inclusion, psychosocial support, international humanitarian law, Fundamental Principles, etc.), the provision of specialised, professional education or training (e.g.,
+                        nursing, emergency brigades, ambulance services, health and care, social services, etc.), the training of teachers and other education personnel (e.g., on pedagogical approaches)
+                    </p>
+                    <p>
+                        <strong>General</strong>
+                        <br>If the reporting National Society does not have blood donation facilities, but promotes blood donations, it should count people reached with these promotional activities as part of “People Reached” (irrespective of whether
+                        they actually donate blood at some other facility). It will be under People Reached Health
+                    </p>
+                </div>
+                <fieldset class="fieldset-auto">
+                    <legend>People Reached by Thematic Area</legend>
+                    <div class="row">
+                        <div class="col-30">
+                            <label for="drrd">Disaster Risk Reduction(Directly):</label>
+                        </div>
+                        <div class="col-70">
+                            <input type="number" id="drrd" name="Disaster_Risk_Reduction_Direct" required><br>
+                            <br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-30">
+                            <label for="drri">Disaster Risk Reduction(Indirectly):</label>
+                        </div>
+                        <div class="col-70">
+                            <input type="number" id="drri" name="Disaster_Risk_Reduction_Indirect" required><br>
+                            <br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-30">
+                            <label for="sd">Shelter(Directly):</label>
+                        </div>
+                        <div class="col-70">
+                            <input type="number" id="sd" name="Shelter_Direct" required><br>
+                            <br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-30">
+                            <label for="si">Shelter(Indirectly):</label>
+                        </div>
+                        <div class="col-70">
+                            <input type="number" id="si" name="Shelter_Indirect" required><br>
+                            <br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-30">
+                            <label for="ld">Livelihood(Directly):</label>
+                        </div>
+                        <div class="col-70">
+                            <input type="number" id="ld" name="Livelihood_Direct" required><br>
+                            <br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-30">
+                            <label for="li">Livelihood(Indirectly):</label>
+                        </div>
+                        <div class="col-70">
+                            <input type="number" id="li" name="Livelihood_Indirect" required><br>
+                            <br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-30">
+                            <label for="hd">Health(Directly):</label>
+                        </div>
+                        <div class="col-70">
+                            <input type="number" id="hd" name="Health_Direct" required><br>
+                            <br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-30">
+                            <label for="hi">Health(Indirectly):</label>
+                        </div>
+                        <div class="col-70">
+                            <input type="number" id="hi" name="Health_Indirect" required><br>
+                            <br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-30">
+                            <label for="wd">WASH(Directly):</label>
+                        </div>
+                        <div class="col-70">
+                            <input type="number" id="wd" name="WASH_Direct" required><br>
+                            <br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-30">
+                            <label for="wi">WASH(Indirectly):</label>
+                        </div>
+                        <div class="col-70">
+                            <input type="number" id="wi" name="WASH_Indirect" required><br>
+                            <br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-30">
+                            <label for="md">Migration(Directly):</label>
+                        </div>
+                        <div class="col-70">
+                            <input type="number" id="md" name="Migration_Direct" required><br>
+                            <br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-30">
+                            <label for="mi">Migration(Indirectly):</label>
+                        </div>
+                        <div class="col-70">
+                            <input type="number" id="mi" name="Migration_Indirect" required><br>
+                            <br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-30">
+                            <label for="cecd">Climate & Environmental Crisis(Directly):</label>
+                        </div>
+                        <div class="col-70">
+                            <input type="number" id="cecd" name="Climate_EnvironmentalCrisis_Direct" required><br>
+                            <br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-30">
+                            <label for="ceci">Climate & Environmental Crisis(Indirectly):</label>
+                        </div>
+                        <div class="col-70">
+                            <input type="number" id="ceci" name="Climate_EnvironmentalCrisis_Indirect" required><br>
+                            <br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-30">
+                            <label for="ctd">Cash Transfer(Directly):</label>
+                        </div>
+                        <div class="col-70">
+                            <input type="number" id="ctd" name="Cash_Transfer_Direct" required><br>
+                            <br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-30">
+                            <label for="cti">Cash Transfer(Indirectly):</label>
+                        </div>
+                        <div class="col-70">
+                            <input type="number" id="cti" name="Cash_Transfer_Indirect" required><br>
+                            <br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-30">
+                            <label for="vpid">Value Protection & Inclusion (Through educational programmes)(Directly):</label>
+                        </div>
+                        <div class="col-70">
+                            <input type="number" id="vpid" name="Value_Prot_Inclu_thru_Edu_Prog_Direct" required><br>
+                            <br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-30">
+                            <label for="vpii">Value Protection & Inclusion (Through educational programmes)(Indirectly):</label>
+                        </div>
+                        <div class="col-70">
+                            <input type="number" id="vpii" name="Value_Prot_Inclu_thru_Edu_Prog_Indirect" required><br>
+                            <br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-30">
+                            <label for="vpipd">Value Protection & Inclusion (Through Protection, Gender & Inclusion Activities)(Directly):</label>
+                        </div>
+                        <div class="col-70">
+                            <input type="number" id="vpipd" name="Value_Prot_Inclu_thru_Prot_Gender_Inclu_Acts_Direct" required><br>
+                            <br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-30">
+                            <label for="vpipi">Value Protection & Inclusion (Through Protection, Gender & Inclusion Activities)(Indirectly):</label>
+                        </div>
+                        <div class="col-70">
+                            <input type="number" id="vpipi" name="Value_Prot_Inclu_thru_Prot_Gender_Inclu_Acts_Indirect" required><br>
+                </fieldset>
+                </div>
+                </div>
+            </div>
+            <br>
+            <button type="submit" onclick="return confirm('Confirm Submission')">Submit Data</button>
+        </form>
+    </div>
+</body>
