@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express();
 const expressLayouts = require('express-ejs-layouts')
+const passport = require('passport')
 
 const indexRouter = require('./routes/index')
 
@@ -9,6 +10,8 @@ app.set('views', __dirname + '/views')
 app.set('layout', 'layouts/layout')
 app.use(expressLayouts)
 app.use(express.static('public'))
+
+require('./passport')(passport)
 
 const mysql = require('mysql')
     // MySQL database connection
